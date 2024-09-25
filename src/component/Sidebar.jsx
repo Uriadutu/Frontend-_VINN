@@ -24,11 +24,7 @@ const Sidebar = () => {
 
   return (
     <div className="hidden sm:block z-40 bg-gradient-to-t from-[#202020] to-[#000000] w-64 px-6 h-[100vh] drop-shadow-lg relative">
-      {openAkun && (
-        <div className="fixed right-5 inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <MenejemenAkunModal setIsOpenModalAdd={setOpenAkun} />
-        </div>
-      )}
+      {openAkun && <MenejemenAkunModal setIsOpenModalAdd={setOpenAkun} />}
       <div className="w-full">
         <div className="w-full">
           <Link
