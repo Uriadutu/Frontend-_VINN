@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { motion } from "framer-motion";
 const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState("");
@@ -40,10 +40,16 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
       id="default-modal"
       tabIndex="-1"
       aria-hidden="true"
-      className="fixed inset-0 px-2 flex items-center justify-center bg-black z-40 bg-opacity-60"
+      className="fixed inset-0 px-2 flex items-center sm:items-start sm:pt-3 justify-center bg-black z-40 bg-opacity-60"
     >
       <form onSubmit={saveProduct}>
-        <div className="w-full max-w-lg bg-white rounded-lg shadow-lg">
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 0.3 }}
+          className="w-full max-w-lg bg-white rounded-lg shadow-lg"
+        >
           <div className="flex items-start justify-between p-4 border-b rounded-t">
             <h3 className="text-xl font-semibold text-gray-900">
               Tambah Makanan
@@ -163,7 +169,7 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
               Batal
             </button>
           </div>
-        </div>
+        </motion.div>
       </form>
     </div>
   );

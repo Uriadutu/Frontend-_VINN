@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
 import logo from "../img/logoAPK.png";
 import MenejemenAkunModal from "./modals/MenejemenAkunModal";
+import { AnimatePresence } from "framer-motion";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const Sidebar = () => {
 
   return (
     <div className="hidden sm:block z-40 bg-gradient-to-t from-[#202020] to-[#000000] w-64 px-6 h-[100vh] drop-shadow-lg relative">
-      {openAkun && <MenejemenAkunModal setIsOpenModalAdd={setOpenAkun} />}
+      <AnimatePresence>
+        {openAkun && <MenejemenAkunModal setIsOpenModalAdd={setOpenAkun} />}
+      </AnimatePresence>
       <div className="w-full">
         <div className="w-full">
           <Link

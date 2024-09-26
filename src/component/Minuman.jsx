@@ -3,6 +3,7 @@ import axios from "axios";
 import AddMinumanModal from "./modals/AddMinumanModal";
 import EditProdukModal from "./modals/EditProdukModal";
 import InfoMenuModal from "./user/InfoMenuModal";
+import { AnimatePresence } from "framer-motion";
 
 const Minuman = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -22,41 +23,43 @@ const Minuman = () => {
 
   const deleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/minuman/${productId}`);
+      await axios.delete(`http://localhost:5000/products/${productId}`);
       getProducts();
     } catch (error) {
       console.log(error);
     }
   };
 
-   const handleClickEdit =(item) => {
-    setEditModal(true)
-    setItem(item)
-  }
-  
- const handleClickLihat = (item) => {
-   setOpenModalInfo(true);
-   setItem(item);
- };
+  const handleClickEdit = (item) => {
+    setEditModal(true);
+    setItem(item);
+  };
+
+  const handleClickLihat = (item) => {
+    setOpenModalInfo(true);
+    setItem(item);
+  };
 
   return (
     <div className="">
-      {openModal && (
-        <AddMinumanModal
-          getMakanan={getProducts}
-          setIsOpenModalAdd={setOpenModal}
-        />
-      )}
-      {editModal && (
-        <EditProdukModal
-          getMakanan={getProducts}
-          setIsOpenModalAdd={setEditModal}
-          item={item}
-        />
-      )}
-      {openModalInfo && (
-        <InfoMenuModal setIsOpenModalAdd={setOpenModalInfo} item={item} />
-      )}
+      <AnimatePresence>
+        {openModal && (
+          <AddMinumanModal
+            getMakanan={getProducts}
+            setIsOpenModalAdd={setOpenModal}
+          />
+        )}
+        {editModal && (
+          <EditProdukModal
+            getMakanan={getProducts}
+            setIsOpenModalAdd={setEditModal}
+            item={item}
+          />
+        )}
+        {openModalInfo && (
+          <InfoMenuModal setIsOpenModalAdd={setOpenModalInfo} item={item} />
+        )}
+      </AnimatePresence>
       <h1 className="font-semibold text-lg text-gray-700">Minuman</h1>
       <div className="flex justify-between items-center">
         <button
@@ -89,7 +92,7 @@ const Minuman = () => {
             />
             <div className="mx-3">
               <h1 className="uppercase font-semibold">{item?.name}</h1>
-              <h1 className="absolute font-semibold bottom-10  text-lg sm:text-xl ">
+              <h1 className="absolute font-semibold bottom-10 text-lg sm:text-xl ">
                 Rp.{item?.price}
               </h1>
               <div className="absolute flex right-3 bottom-2 gap-1">

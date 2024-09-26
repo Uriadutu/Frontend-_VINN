@@ -4,13 +4,13 @@ import { FaGlassWater } from "react-icons/fa6";
 import { IoFastFoodSharp } from "react-icons/io5";
 import { FaBowlFood } from "react-icons/fa6";
 import axios from "axios";
-import Gambar from "../../img/AllProduct.png"
 import InfoMenuModal from "./InfoMenuModal";
+import { AnimatePresence } from "framer-motion";
 const Home = () => {
   const [activeButton, setActiveButton] = useState("/");
-  const [openModalInfo, setOpenModalInfo] = useState(false)
-  const [item, setItem] = useState([])
-  
+  const [openModalInfo, setOpenModalInfo] = useState(false);
+  const [item, setItem] = useState([]);
+
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
   };
@@ -29,17 +29,18 @@ const Home = () => {
     }
   };
 
-  const handleClickLihat = (item)=> {
-    setOpenModalInfo(true)
-    setItem(item)
-  }
-
+  const handleClickLihat = (item) => {
+    setOpenModalInfo(true);
+    setItem(item);
+  };
 
   return (
     <div className="sm:px-2 md:px-8 px-2">
-      {openModalInfo && (
-        <InfoMenuModal setIsOpenModalAdd={setOpenModalInfo} item={item} />
-      )}
+      <AnimatePresence>
+        {openModalInfo && (
+          <InfoMenuModal setIsOpenModalAdd={setOpenModalInfo} item={item} />
+        )}
+      </AnimatePresence>
       <div className="relative">
         <div className="absolute pl-3 mt-7 sm:pl-9 sm:mt-20 md:mt-16 lg:mt-40 md:pl-12">
           <h1 className="text-[12px] sm:text-sm">BERANDA</h1>
@@ -185,32 +186,6 @@ const Home = () => {
               </div>
             </div>
           ))}
-
-          <div
-            data-aos="zoom-in"
-            className="relative drop-shadow-lg h-[330px] bg-white pt-2 rounded"
-          >
-            <div className="flex justify-between items-center mx-3 mt-2">
-              <h1 className="font-semibold text-xs ">Makanan</h1>
-              <div className="flex gap-1">
-                <div className="bg-orange-300 p-1"></div>
-                <div className="bg-orange-300 p-1"></div>
-                <div className="bg-orange-300 p-1"></div>
-              </div>
-            </div>
-            <img
-              src={Gambar}
-              className="w-full h-[200px] object-cover"
-              alt=""
-            />
-            <div className="mx-3">
-              <h1 className="font-semibold">Makanan Contoh</h1>
-              <h1 className="font-semibold">21</h1>
-              <button className="absolute right-3 bottom-2  py-1 px-3 text-gray-600 text-xs bg-gray-100 hover:bg-gray-200 border border-gray-100 rounded">
-                Lihat
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

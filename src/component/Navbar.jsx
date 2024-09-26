@@ -8,10 +8,11 @@ import { LogOut, reset } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 import { IoIosClose } from "react-icons/io";
 import MenejemenAkunModal from "./modals/MenejemenAkunModal";
+import { AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [openSidebar, setOpenSideBar] = useState(false);
-  const [openAkun, setOpenAkun] = useState(false)
+  const [openAkun, setOpenAkun] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Navbar = () => {
 
   const handleManajemen = () => {
     setOpenSideBar(false);
-    setOpenAkun(true)
+    setOpenAkun(true);
   };
 
   return (
@@ -91,9 +92,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {openAkun && (
-        <MenejemenAkunModal setIsOpenModalAdd={setOpenAkun}/>
-      )}
+      <AnimatePresence>
+        {openAkun && <MenejemenAkunModal setIsOpenModalAdd={setOpenAkun} />}
+      </AnimatePresence>
       <div className="sm:hidden block bg-black w-full flex m-0 py-4 z-10 justify-between items-center fixed">
         <div className="flex pl-5 justify-between w-full items-center">
           <button onClick={() => setOpenSideBar(true)} className="">

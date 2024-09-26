@@ -2,33 +2,30 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactDOM from "react-dom"
+import { motion } from "framer-motion";
 
 const MenejemenAkunModal = ({ setIsOpenModalAdd }) => {
     
   const { user } = useSelector((state) => state.auth);
   const [pass, setPass] = useState("");
-  const [confPass, setConfPass] = useState(""); // State untuk konfirmasi password
+  const [confPass, setConfPass] = useState(""); 
   const [username, setUsername] = useState(user.username);
   const [msg, setMsg] = useState("");
 
   const editSandi = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setMsg(""); // Reset pesan sebelum mengirim permintaan
+    e.preventDefault();
+    setMsg(""); 
     try {
-      const response = await axios.patch(
+      await axios.patch(
         `http://localhost:5000/user/${user.id}`,
         {
           username: username,
           password: pass,
-          confPassword: confPass, // Kirim konfirmasi password
+          confPassword: confPass,
         }
       );
-
-      // Handle response jika diperlukan
-      console.log(response.data);
       setIsOpenModalAdd(false);
     } catch (error) {
-      // Tangani error jika ada
       if (error.response && error.response.data) {
         setMsg(
           error.response.data.msg || "Terjadi kesalahan, silakan coba lagi."
@@ -44,10 +41,14 @@ const MenejemenAkunModal = ({ setIsOpenModalAdd }) => {
        id="default-modal"
        tabIndex="-1"
        aria-hidden="true"
-       className="fixed inset-0 px-2 flex items-center justify-center bg-black z-40 bg-opacity-60"
+      className="fixed inset-0 px-2 flex items-center sm:items-start sm:pt-3 justify-center bg-black z-40 bg-opacity-60"
      >
        <form onSubmit={editSandi}>
-         <div className="w-full max-w-lg bg-white rounded-lg shadow-lg">
+         <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 0.3 }} className="w-full max-w-lg bg-white rounded-lg shadow-lg">
            <div className="flex items-start justify-between p-4 border-b rounded-t">
              <h3 className="text-xl font-semibold text-gray-900">
                Menejemen Akun
@@ -135,7 +136,7 @@ const MenejemenAkunModal = ({ setIsOpenModalAdd }) => {
                Batal
              </button>
            </div>
-         </div>
+         </motion.div>
        </form>
      </div>,
    document.getElementById("root")

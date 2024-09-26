@@ -1,4 +1,5 @@
 import React from "react";
+import {motion} from "framer-motion"
 const InfoMenuModal = ({ setIsOpenModalAdd, item }) => {
   return (
     <div
@@ -8,7 +9,13 @@ const InfoMenuModal = ({ setIsOpenModalAdd, item }) => {
       className="fixed inset-0 px-2 flex items-center sm:items-start sm:pt-3 justify-center bg-black z-40 bg-opacity-60"
     >
       <form>
-        <div className="w-[23rem] sm:w-[25rem] bg-white rounded-lg shadow-lg">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3 }}
+          className="w-[23rem] sm:w-[25rem] bg-white rounded-lg shadow-lg"
+        >
           <div className="flex items-start justify-between p-4 border-b rounded-t">
             <h3 className="text-xl font-semibold text-gray-900">
               {item?.name}
@@ -60,12 +67,11 @@ const InfoMenuModal = ({ setIsOpenModalAdd, item }) => {
                 </div>
               </div>
               <div className="">
-                <div className="">
-                </div>
+                <div className=""></div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </form>
     </div>
   );

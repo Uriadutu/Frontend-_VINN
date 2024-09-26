@@ -3,13 +3,14 @@ import AddMakananModal from "./modals/AddMakananModal";
 import axios from "axios";
 import EditProdukModal from "./modals/EditProdukModal";
 import InfoMenuModal from "./user/InfoMenuModal";
+import { AnimatePresence } from "framer-motion";
 
 const Makanan = () => {
   const [openModal, setOpenModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [openModalInfo, setOpenModalInfo] = useState(false);
   const [products, setProducts] = useState([]);
-  const [item, setItem] = useState(false)
+  const [item, setItem] = useState(false);
 
   useEffect(() => {
     getProducts();
@@ -29,33 +30,35 @@ const Makanan = () => {
     }
   };
 
-  const handleClickEdit =(item) => {
-    setEditModal(true)
-    setItem(item)
-  }
- const handleClickLihat = (item) => {
-   setOpenModalInfo(true);
-   setItem(item);
- };
+  const handleClickEdit = (item) => {
+    setEditModal(true);
+    setItem(item);
+  };
+  const handleClickLihat = (item) => {
+    setOpenModalInfo(true);
+    setItem(item);
+  };
 
   return (
     <div className="">
-      {openModal && (
-        <AddMakananModal
-          getMakanan={getProducts}
-          setIsOpenModalAdd={setOpenModal}
-        />
-      )}
-      {editModal && (
-        <EditProdukModal
-          getMakanan={getProducts}
-          setIsOpenModalAdd={setEditModal}
-          item={item}
-        />
-      )}
-      {openModalInfo && (
-        <InfoMenuModal setIsOpenModalAdd={setOpenModalInfo} item={item} />
-      )}
+      <AnimatePresence>
+        {openModal && (
+          <AddMakananModal
+            getMakanan={getProducts}
+            setIsOpenModalAdd={setOpenModal}
+          />
+        )}
+        {editModal && (
+          <EditProdukModal
+            getMakanan={getProducts}
+            setIsOpenModalAdd={setEditModal}
+            item={item}
+          />
+        )}
+        {openModalInfo && (
+          <InfoMenuModal setIsOpenModalAdd={setOpenModalInfo} item={item} />
+        )}
+      </AnimatePresence>
       <h1 className="font-semibold text-lg text-gray-700">Makanan</h1>
       <div className="flex justify-between items-center">
         <button
