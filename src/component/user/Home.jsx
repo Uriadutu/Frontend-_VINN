@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import All from "../../img/AllProduct.png";
+import All from "../../img/bg.jpg";
 import { FaGlassWater } from "react-icons/fa6";
 import { IoFastFoodSharp } from "react-icons/io5";
 import { FaBowlFood } from "react-icons/fa6";
@@ -42,13 +42,9 @@ const Home = () => {
         )}
       </AnimatePresence>
       <div className="relative">
-        <div className="absolute pl-3 mt-7 sm:pl-9 sm:mt-20 md:mt-16 lg:mt-40 md:pl-12">
-          <h1 className="text-[12px] sm:text-sm">BERANDA</h1>
-          <h1 className="sm:text-3xl text-lg mt-0 sm:mt-2 font-bold">PRODUK</h1>
-        </div>
         <img src={All} className="rounded-sm sm:rounded-3xl" alt="" />
       </div>
-      <h1 className="sm:text-3xl text-lg text-left mt-5 sm:mt-10 text-gray-600 font-bold">
+      <h1 className="sm:text-3xl text-lg text-left mt-5 sm:mt-10 font-bold text-white">
         PILIH KATEGORI
       </h1>
       <div className="mt-4">
@@ -57,8 +53,8 @@ const Home = () => {
           <div
             className={`flex items-center cursor-pointer px-2 py-3 justify-center sm:px-5 sm:py-5 rounded-md transition ${
               activeButton === "/"
-                ? "bg-gray-600"
-                : "bg-gray-400 hover:bg-gray-500"
+                ? "bg-[#2c2c2c]"
+                : "bg-[#424242] hover:bg-[#2c2c2c]"
             }`}
             onClick={() => handleButtonClick("/")}
           >
@@ -81,8 +77,8 @@ const Home = () => {
           <div
             className={`flex items-center justify-center cursor-pointer px-2 py-3 sm:px-5 sm:py-5 rounded-md transition ${
               activeButton === "/makanan"
-                ? "bg-orange-500"
-                : "bg-orange-300 hover:bg-orange-400"
+                ? "bg-[#2c2c2c]"
+                : "bg-[#424242] hover:bg-[#2c2c2c]"
             }`}
             onClick={() => handleButtonClick("/makanan")}
           >
@@ -105,8 +101,8 @@ const Home = () => {
           <div
             className={`flex items-center cursor-pointer px-2 py-3 justify-center sm:px-5 sm:py-5 rounded-md transition ${
               activeButton === "/minuman"
-                ? "bg-[#554acc]"
-                : "bg-[#ABA9FF] hover:bg-[#6D61FF]"
+                ? "bg-[#2c2c2c]"
+                : "bg-[#424242] hover:bg-[#2c2c2c]"
             }`}
             onClick={() => handleButtonClick("/minuman")}
           >
@@ -133,10 +129,12 @@ const Home = () => {
               data-aos="zoom-in"
               data-aos-delay={`${index * 100}`}
               key={index + 1}
-              className="drop-shadow-lg h-[370px] bg-white pt-2 rounded"
+              className="drop-shadow-lg h-[370px] bg-[#353535] pt-2 rounded"
             >
               <div className="flex justify-between items-center mx-3 mt-2">
-                <h1 className="font-semibold text-lg ">{item?.kategori}</h1>
+                <h1 className="font-semibold text-lg text-white ">
+                  {item?.kategori}
+                </h1>
                 <div className="flex gap-1">
                   <div
                     className={`p-1 ${
@@ -173,13 +171,15 @@ const Home = () => {
                 alt=""
               />
               <div className="mx-3">
-                <h1 className="uppercase font-semibold">{item?.name}</h1>
-                <h1 className="absolute font-semibold bottom-10 text-lg sm:text-xl ">
+                <h1 className="uppercase font-semibold text-white">
+                  {item?.name}
+                </h1>
+                <h1 className="absolute font-semibold bottom-10 text-lg sm:text-xl text-white">
                   Rp.{item?.price}
                 </h1>
                 <button
                   onClick={() => handleClickLihat(item)}
-                  className="absolute right-3 bottom-2 py-1 px-3 text-gray-600 text-xs bg-gray-100 hover:bg-gray-200 border border-gray-100 rounded"
+                  className="absolute right-3 bottom-2 py-1 px-3 text-gray-200 text-xs bg-[#424242] hover:bg-[#2c2c2c] border border-gray-600 rounded"
                 >
                   Lihat
                 </button>

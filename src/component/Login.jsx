@@ -29,7 +29,7 @@ const Login = () => {
 
   return (
     <div className="">
-      <section className="bg-white sm:bg-transparent">
+      <section className=" bg-gradient-to-t from-[#1f1f1f33] to-black sm:bg-transparent">
         <div className="flex justify-center items-center">
           <div className=" is-center">
             <div className="is-4">
@@ -45,11 +45,11 @@ const Login = () => {
                       <br />
                       inn
                     </p>
-                  {isError && (
-                    <div className="px-4 py-2 text-red-600 bg-red-100 border border-red-300 rounded-md">
-                      {message}
-                    </div>
-                  )}
+                    {isError && (
+                      <div className="px-4 py-2 text-red-600 bg-red-100 border border-red-300 rounded-md">
+                        {message}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -74,7 +74,7 @@ const Login = () => {
                 <div className=" mt-4">
                   <button
                     type="submit"
-                    className="w-full p-2 bg-blue-900 bg-opacity-80 text-white rounded hover:bg-blue-600"
+                    className="w-full p-2 bg-[#E7C057] bg-opacity-80 text-white rounded hover:bg-[#f3ce68]"
                   >
                     {isLoading ? "Loading..." : "Login"}
                   </button>
