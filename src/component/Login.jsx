@@ -29,13 +29,13 @@ const Login = () => {
 
   return (
     <div className="">
-      <section className=" bg-gradient-to-t from-[#1f1f1f33] to-black sm:bg-transparent">
-        <div className="flex justify-center items-center">
-          <div className=" is-center">
-            <div className="is-4">
+      <section className="  px-0 sm:bg-transparent">
+        <div className="flex justify-center items-center px-0 ">
+          <div className="">
+            <div className="">
               <form
                 onSubmit={Auth}
-                className="relative w-[350px] bg-opacity-80 sm:bg-white sm:shadow-lg sm:rounded-lg px-5 py-10 sm:px-10 sm:py-10"
+                className="relative w-[350px] bg-opacity-80 bg-black sm:shadow-lg sm:rounded-lg px-5 py-10 sm:px-10 sm:py-10"
               >
                 <div className="flex justify-center mt-2">
                   <div className="">

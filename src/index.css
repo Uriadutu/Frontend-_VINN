@@ -4,7 +4,7 @@
 
 
 .btn-add {
-  @apply px-3 py-2 mb-0 bg-blue-500 text-white font-semibold text-sm rounded-md shadow-md hover:bg-blue-600 transition duration-300;
+  @apply px-3 py-2 mb-0 bg-[#E7C057] text-white font-semibold text-sm rounded-md shadow-md hover:bg-[#f3ce68] transition duration-300;
 }
 
 .btn-batal {
@@ -20,16 +20,16 @@
 }
 
 .btn-simpan {
-  @apply px-3 py-2 mb-0 bg-blue-500 text-white font-semibold text-sm rounded-md hover:bg-blue-600 transition duration-300;
+  @apply px-3 py-2 mb-0 bg-[#E7C057] text-white font-semibold text-sm rounded-md hover:bg-[#f3ce68] transition duration-300;
 }
 
 .detail {
-  @apply p-1 text-white text-xs bg-blue-600 hover:bg-blue-500 border border-gray-100 rounded;
+  @apply py-1 px-3 text-gray-200 text-xs bg-[#424242] hover:bg-[#2c2c2c] border border-gray-600 rounded;
 }
 .edit {
-  @apply p-1 text-gray-600 text-xs bg-[#FFE500] hover:bg-[#FFED47] border border-gray-100  rounded;
+  @apply py-1 px-3 text-gray-200 text-xs bg-[#424242] hover:bg-[#2c2c2c] border border-gray-600 rounded;
 }
 
 .delete {
-  @apply p-1 text-white text-xs bg-[#EB0000] hover:bg-[#FF3535] border border-gray-100  rounded;
+  @apply py-1 px-3 text-gray-200 text-xs bg-[#424242] hover:bg-[#2c2c2c] border border-gray-600 rounded;
 }

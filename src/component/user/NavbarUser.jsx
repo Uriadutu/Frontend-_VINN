@@ -4,7 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import LogoApp from "../../img/logoAPK.png"
 const NavbarUser = () => {
   return (
-    <div className="flex justify-between items-center fixed z-10 bg-black py-2 sm:py-3 w-full drop-shadow-md px-2  sm:px-10 border-b border-gray-300 ">
+    <div className="flex justify-between items-center fixed z-10 bg-black py-2 sm:py-3 w-full drop-shadow-md px-2  sm:px-10 border-b border-black ">
       <Link
         to={"/"}
         className="uppercase font-bold text-md sm:text-lg text-orange-300"

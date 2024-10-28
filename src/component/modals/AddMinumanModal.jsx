@@ -26,7 +26,7 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
     try {
       await axios.post("http://localhost:5000/products", formData, {
         headers: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "multipart/form-data",
         },
       });
       setIsOpenModalAdd(false);
@@ -41,7 +41,7 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
       id="default-modal"
       tabIndex="-1"
       aria-hidden="true"
-      className="fixed inset-0 px-2 flex items-center sm:items-start sm:pt-3 justify-center bg-black z-40 bg-opacity-60"
+      className="fixed inset-0 px-2 flex items-center sm:items-start sm:pt-3 justify-center bg-black bg-opacity-70 z-40"
     >
       <form onSubmit={saveProduct}>
         <motion.div
@@ -49,16 +49,16 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -40 }}
           transition={{ duration: 0.3 }}
-          className="w-full max-w-lg bg-white rounded-lg shadow-lg"
+          className="w-full max-w-lg bg-gray-800 text-white rounded-lg shadow-lg"
         >
-          <div className="flex items-start justify-between p-4 border-b rounded-t">
-            <h3 className="text-xl font-semibold text-gray-900">
+          <div className="flex items-start justify-between p-4 border-b border-gray-700 rounded-t">
+            <h3 className="text-xl font-semibold text-gray-100">
               Tambah Minuman
             </h3>
             <button
               onClick={() => setIsOpenModalAdd(false)}
               type="button"
-              className="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto"
+              className="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-700 hover:text-gray-300 ms-auto"
               data-modal-hide="default-modal"
             >
               <svg
@@ -82,13 +82,13 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
           <div className="p-4 space-y-4">
             <div className="mb-6">
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Product Name
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+                    className="w-full px-3 py-2 border border-gray-600 rounded-lg bg-gray-700 text-gray-200 focus:outline-none"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Product Name"
@@ -97,13 +97,13 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
               </div>
 
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Product Description
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+                    className="w-full px-3 py-2 border border-gray-600 rounded-lg bg-gray-700 text-gray-200 focus:outline-none"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Product Description"
@@ -112,13 +112,13 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
               </div>
 
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Product Price
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+                    className="w-full px-3 py-2 border border-gray-600 rounded-lg bg-gray-700 text-gray-200 focus:outline-none"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder="Product Price"
@@ -127,7 +127,7 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
               </div>
 
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Image
                 </label>
                 <div className="mt-1">
@@ -137,7 +137,7 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       onChange={loadImage}
                     />
-                    <div className="flex items-center justify-center px-4 py-2 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-lg">
+                    <div className="flex items-center justify-center px-4 py-2 text-sm text-gray-300 bg-gray-700 border border-gray-600 rounded-lg">
                       <span className="mr-2">Choose a file...</span>
                     </div>
                   </div>
@@ -155,17 +155,17 @@ const AddMinumanModal = ({ setIsOpenModalAdd, getMakanan }) => {
               )}
             </div>
           </div>
-          <div className="flex items-center justify-end p-4 space-x-3 border-t border-gray-200 rounded-b">
+          <div className="flex items-center justify-end p-4 space-x-3 border-t border-gray-700 rounded-b">
             <button
               type="submit"
-              className="px-3 py-2 mb-0 bg-blue-500 text-white font-semibold text-sm rounded-md hover:bg-blue-600 transition duration-300"
+              className="btn-simpan"
             >
               Simpan
             </button>
             <button
               onClick={() => setIsOpenModalAdd(false)}
-              type="submit"
-              className="px-3 py-2 mb-0 bg-white border border-gray-300 text-black text-sm rounded-md hover:bg-gray-100 transition duration-300"
+              type="button"
+              className="px-3 py-2 mb-0 bg-gray-700 border border-gray-600 text-gray-200 text-sm rounded-md hover:bg-gray-600 transition duration-300"
             >
               Batal
             </button>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+
 const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState("");
@@ -25,7 +26,7 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
     try {
       await axios.post("http://localhost:5000/products", formData, {
         headers: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "multipart/form-data",
         },
       });
       setIsOpenModalAdd(false);
@@ -48,16 +49,14 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -40 }}
           transition={{ duration: 0.3 }}
-          className="w-full max-w-lg bg-white rounded-lg shadow-lg"
+          className="w-full max-w-lg bg-gray-800 rounded-lg shadow-lg"
         >
-          <div className="flex items-start justify-between p-4 border-b rounded-t">
-            <h3 className="text-xl font-semibold text-gray-900">
-              Tambah Makanan
-            </h3>
+          <div className="flex items-start justify-between p-4 border-b border-gray-700 rounded-t">
+            <h3 className="text-xl font-semibold text-white">Tambah Makanan</h3>
             <button
               onClick={() => setIsOpenModalAdd(false)}
               type="button"
-              className="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto"
+              className="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-700 hover:text-gray-100 ms-auto"
               data-modal-hide="default-modal"
             >
               <svg
@@ -78,16 +77,16 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
               <span className="sr-only">Close modal</span>
             </button>
           </div>
-          <div className="p-4 space-y-4">
+          <div className="p-4 space-y-4 text-gray-300">
             <div className="mb-6">
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Product Name
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+                    className="w-full px-3 py-2 border border-gray-600 bg-gray-700 text-gray-100 rounded-lg focus:outline-none"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Product Name"
@@ -96,13 +95,13 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
               </div>
 
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Product Description
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+                    className="w-full px-3 py-2 border border-gray-600 bg-gray-700 text-gray-100 rounded-lg focus:outline-none"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Product Description"
@@ -111,13 +110,13 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
               </div>
 
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Product Price
                 </label>
                 <div className="mt-1">
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
+                    className="w-full px-3 py-2 border border-gray-600 bg-gray-700 text-gray-100 rounded-lg focus:outline-none"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder="Product Price"
@@ -126,7 +125,7 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
               </div>
 
               <div className="mb-4 grid items-center grid-cols-2 gap-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-300">
                   Image
                 </label>
                 <div className="mt-1">
@@ -136,7 +135,7 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       onChange={loadImage}
                     />
-                    <div className="flex items-center justify-center px-4 py-2 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-lg">
+                    <div className="flex items-center justify-center px-4 py-2 text-sm text-gray-300 bg-gray-700 border border-gray-600 rounded-lg">
                       <span className="mr-2">Choose a file...</span>
                     </div>
                   </div>
@@ -154,17 +153,17 @@ const AddMakananModal = ({ setIsOpenModalAdd, getMakanan }) => {
               )}
             </div>
           </div>
-          <div className="flex items-center justify-end p-4 space-x-3 border-t border-gray-200 rounded-b">
+          <div className="flex items-center justify-end p-4 space-x-3 border-t border-gray-700 rounded-b">
             <button
               type="submit"
-              className="px-3 py-2 mb-0 bg-blue-500 text-white font-semibold text-sm rounded-md hover:bg-blue-600 transition duration-300"
+              className="btn-simpan"
             >
               Simpan
             </button>
             <button
               onClick={() => setIsOpenModalAdd(false)}
-              type="submit"
-              className="px-3 py-2 mb-0 bg-white border border-gray-300 text-black text-sm rounded-md hover:bg-gray-100 transition duration-300"
+              type="button"
+              className="px-3 py-2 mb-0 bg-gray-700 border border-gray-600 text-white text-sm rounded-md hover:bg-gray-600 transition duration-300"
             >
               Batal
             </button>
