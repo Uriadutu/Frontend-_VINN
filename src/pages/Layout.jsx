@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <React.Fragment>
       <div
-        className="p-0 flex bg-gradient-to-b from-[#000000] to-[#2e2e2e] "
+        className="p-0 flex bg-gradient-to-t from-white to-gray-50 "
         style={{ minHeight: "100vh" }}
       >
         <div className="">

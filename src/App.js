@@ -1,11 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/userPage/HomePage";
 import LoginPage from "./pages/LoginPage";
-import MinumanPage from "./pages/MinumanPage";
-import MakananPage from "./pages/MakananPage";
-
-
-
+import DasborPage from "./pages/DasborPage";
+import Register from "./component/Register";
+import PrediksiPage from "./pages/PrediksiPage";
+import RiwayatPage from "./pages/RiwayatPage";
 
 
 function App() {
@@ -13,10 +11,11 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/makanan" element={<MakananPage/>} />
-          <Route path="/minuman" element={<MinumanPage/>} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/daftar" element={<Register />} />
+          <Route path="/dasbor" element={<DasborPage/>} />
+          <Route path="/prediksi" element={<PrediksiPage/>} />
+          <Route path="/riwayat" element={<RiwayatPage/>} />
         </Routes>
       </BrowserRouter>
     </div>

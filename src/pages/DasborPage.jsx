@@ -3,9 +3,9 @@ import Layout from './Layout'
 import {useDispatch, useSelector} from 'react-redux'
 import { getMe } from '../features/authSlice'
 import {useNavigate} from 'react-router-dom'
-import Minuman from '../component/Minuman'
+import Dasbor from '../component/Dasbor'
 
-const MinumanPage = () => {
+const DasborPage = () => {
   const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isError } = useSelector((state) => state.auth);
@@ -16,15 +16,15 @@ const MinumanPage = () => {
 
     useEffect(() => {
       if (isError) {
-        navigate("/login");
+        navigate("/");
       }
 
     }, [isError, navigate]);
   return (
     <Layout>
-        <Minuman />
+        <Dasbor />
     </Layout>
   )
 }
 
-export default MinumanPage
+export default DasborPage

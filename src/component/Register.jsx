@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser, reset } from "../features/authSlice";
-import Logo from "../img/logoAPK.png"
 
-
-const Login = () => {
+const Register = () => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  const [confPassword, setConsfPassword] = useState("");
   const navigate = useNavigate();
 
-  const { user, isError, isSuccess, isLoading, message } = useSelector(
-    (state) => state.auth
-  );
+  let isError = false;
+  let message = "";
+  const Regis = async () => {
+    try {
+        if(confPassword === Password) {
 
-  useEffect(() => {
-    if (user || isSuccess) {
-      navigate("/dasbor");
+            await axios.post("http://localhost:5000/register", {
+              username: Username,
+              password: Password,
+            });
+            alert("Pendaftaran Berhasil");
+            navigate("/");
+        } else {
+            isError = true
+            message = "Password Tidak Sama"
+        }
+    } catch (error) {
+      console.log(error);
     }
-    dispatch(reset());
-  }, [user, isSuccess, dispatch, navigate]);
-
-  const Auth = (e) => {
-    e.preventDefault();
-    dispatch(loginUser({ Username, Password }));
   };
-
   return (
     <div className="h-[100vh] bg-gray-100 flex justify-center items-center w-full">
       <section className="  px-0 sm:bg-transparent">
@@ -34,20 +35,21 @@ const Login = () => {
           <div className="">
             <div className="">
               <form
-                onSubmit={Auth}
+                onSubmit={Regis}
                 className="relative w-[350px] bg-opacity-80 bg-gray-300  sm:shadow-lg drop-shadow-lg sm:rounded-lg px-5 py-10 sm:px-10 sm:py-10"
               >
-                  <p className="uppercase text-xl text-center font-bold text-gray-600">
-                    Login
-                  </p>
+                <p className="uppercase text-xl text-center font-bold text-gray-600">
+                  Daftar
+                </p>
                 <div className="flex justify-center mt-2">
-                  <div className="w-full">
                     {isError && (
-                      <div className="px-4 text-center w-full py-2 text-red-600 bg-red-100 border border-red-300 rounded-md">
-                        {message} 
-                      </div>
-                    )}
+
+                  <div className="w-full">
+                    <div className="px-4 text-center w-full py-2 text-red-600 bg-red-100 border border-red-300 rounded-md">
+                      {message}
+                    </div>
                   </div>
+                    )}
                 </div>
 
                 <div className=" mt-4 w-full flex justify-center">
@@ -68,17 +70,29 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                <div className="mt-4 w-full flex justify-center">
+                  <input
+                    type="password"
+                    className="input w-full p-2"
+                    value={confPassword}
+                    placeholder="Konfirmasi Password"
+                    onChange={(e) => setConsfPassword(e.target.value)}
+                  />
+                </div>
                 <div className=" mt-4">
                   <button
                     type="submit"
                     className="w-full p-2 bg-blue-500 bg-opacity-80 text-white rounded hover:bg-blue-600"
                   >
-                    {isLoading ? "Memuat..." : "Masuk"}
+                    Daftar
                   </button>
                   <p className="mt-4">
-                    Belum Punya Akun?{" "}
-                    <Link to={"/daftar"} className="text-blue-400 font-bold  underline">
-                      Daftar
+                    Sudah Punya Akun?{" "}
+                    <Link
+                      to={"/"}
+                      className="text-blue-400 font-bold  underline"
+                    >
+                      Masuk
                     </Link>
                   </p>
                 </div>
@@ -90,4 +104,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Register;

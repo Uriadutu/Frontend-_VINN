@@ -3,9 +3,9 @@ import Layout from './Layout'
 import {useDispatch, useSelector} from 'react-redux'
 import { getMe } from '../features/authSlice'
 import {useNavigate} from 'react-router-dom'
-import Makanan from '../component/Makanan'
+import Prediksi from '../component/Prediksi'
 
-const MakananPage = () => {
+const PrediksiPage = () => {
   const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isError } = useSelector((state) => state.auth);
@@ -16,15 +16,15 @@ const MakananPage = () => {
 
     useEffect(() => {
       if (isError) {
-        navigate("/login");
+        navigate("/");
       }
 
     }, [isError, navigate]);
   return (
     <Layout>
-        <Makanan />
+        <Prediksi />
     </Layout>
   )
 }
 
-export default MakananPage
+export default PrediksiPage
